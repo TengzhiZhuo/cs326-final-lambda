@@ -1,18 +1,76 @@
-.loginLine {
+.login-Line {
     height: 2px;
     width: 1000px;
     background-color: #E0E0E0;
     margin-top: 2px;
 }
 
-.loginLogo {
+.login-Logo {
     width: 564px;
     height: 199px;
     margin-top: 50px;
 }
 
-.loginCenter {
+.login-Center {
     margin: auto;
     width: 50%;
     padding: 0px;
+}
+
+.content-Logo {
+    width: 252px;
+    height: 87px;
+}
+
+.content-Button {
+    margin-left: 15px;
+}
+
+.content-signOut{
+    margin-left: 50%;
+}
+
+.content-Line {
+    height: 2px;
+    width: 100%;
+    background-color: #e5e5e5;
+}
+
+.content-Img {
+    width: 60%;
+    height: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+.content-Text{
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.content-Head{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.content-smallHead{
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
+}
+
+.content-margeTop{
+    margin-top: 10px;
+}
+
+.content-margeBottom{
+    margin-bottom: 20px;
+}
+
+
+.bold{
+    font-weight:bold;
 }
