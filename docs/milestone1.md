@@ -16,7 +16,11 @@ UShare
 
 ## Important Data
 
-* The user profile, including username, a profile picture, graduation date, major, minor, and interest. 
+UShare will implement the following datasets:
+
+* User login Data: Users need to log into our website, so we need to link their email addresses and passwords to their accounts. 
+* User profile data: including username, a profile picture, graduation date, major, minor, and interest
+* Post data: Users can post text, photos, and locations. Other users can comments under the posts, so we also need to have a set of data for user comments.
 
 ## Wireframes
 
@@ -56,7 +60,7 @@ In the main page, the users can send a post with texts, photos, and locations. O
 
 
 #### Screenshot
-
+<img src="img/MainPageScreenshot.jpg" alt="alt text" title="image Title" />
 
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: compeleted the HTML and CSS of main page and user profile page
