@@ -60,7 +60,7 @@ In the main page, the users can send a post with texts, photos, and locations. O
 
 
 #### Screenshot
-<img src="img/MainPageScreenshot.jpg" alt="alt text" title="image Title" />
+<img src="img/MainPageScreenshot.png" alt="alt text" title="image Title" />
 
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: compeleted the HTML and CSS of main page and user profile page
