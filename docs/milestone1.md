@@ -21,6 +21,7 @@ UShare will implement the following datasets:
 * User login Data: Users need to log into our website, so we need to link their email addresses and passwords to their accounts. 
 * User profile data: including username, a profile picture, graduation date, major, minor, and interest
 * Post data: Users can post text, photos, and locations. Other users can comments under the posts, so we also need to have a set of data for user comments.
+* Comment data: including the comment and the information of the user
 
 ## Wireframes
 
