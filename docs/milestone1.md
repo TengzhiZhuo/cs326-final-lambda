@@ -16,7 +16,7 @@ UShare
 
 ## Important Data
 
-* The user profile, including username, a profile picture, graduation date, major and interest.
+* The user profile, including username, a profile picture, graduation date, major, minor, and interest. 
 
 ## Wireframes
 
@@ -40,3 +40,25 @@ The content page is the page where users can see the full content of the experie
 
 <img src="img/contentScreenshot1.png" alt="alt text" title="image Title" />
 <img src="img/contentScreenshot2.png" alt="alt text" title="image Title" />
+
+### User Profile Page
+The user profile page is for the user to log their graduation date, major, minor, and interest. They can click on the "Save" button to save their information. They can also upload their profile pictures by clicking on the "Upload Your Avaar" button, and logout from their account by clicking on the "Logout" button. 
+
+<img src="img/UserProfile.jpg" alt="alt text" title="image Title" />
+
+#### Screenshot
+<img src="img/UserProfileScreenshot.jpg" alt="alt text" title="image Title" />
+
+### Main Page
+In the main page, the users can send a post with texts, photos, and locations. Other users can view the posts and they can click on the post title to see all the information.
+
+<img src="img/MainPage.jpg" alt="alt text" title="image Title" />
+
+
+#### Screenshot
+
+
+## Breakdown of Labor Division
+* Tengzhi Zhuo: compeleted the HTML and CSS of main page and user profile page
+* Yi Ding: compeleted wireframes of mainpage, login page, content page, and the userprofile  
+* Hongxiang Wang: compeleted the HTML and CSS of user login page and content page
