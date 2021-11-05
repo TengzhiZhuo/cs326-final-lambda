@@ -15,6 +15,8 @@ let app = express();
 //     });
 // });
 
+app.get("/user");
+
 //Server
 let server = app.listen(8080, function() {
     
