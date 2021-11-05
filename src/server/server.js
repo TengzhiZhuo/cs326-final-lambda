@@ -1,8 +1,15 @@
 'use strict';
 import * as express from 'express';
-import { allowedNodeEnvironmentFlags } from 'process';
 
 let data = {};
+const JSONfile = './database.json';
+
+//reload function
+function reload(filename) {
+
+};
+
+reload();
 let app = express();
 app.use(express.json());
 
@@ -19,24 +26,15 @@ app.use(express.json());
 
 //UserPage needed data
 app.get('/userPage', (req, res) => {
-    res.send(data['userPage']['userName']);
 });
 
 app.post('/userPage/save', (req, res) => {
-    const k = req.body;
-    for (const key in k) {
-        data['userPage']['userName'][key] = k[key];
-    }
-    res.send();
 });
 
 app.post('/userPage/avatar', (req, res) => {
-    const k = req.params['image'];
-    data['userPage']['userName']['image'] = k; 
-    res.send();
 });
 
 //Server
-let server = app.listen(8080, function() {
+app.listen(8080, function() {
     
 });
