@@ -17,13 +17,13 @@ UShare
 ## API Planning
 
 
-{
-  user: {"1": {username: jack, password: 12345}},
-  profile: {"1": {username: kevin, image: smth.png, post: ["1", "2"]}},
-  post: {"1": {title:abc, content: swhsuw, userid: "1", comment: ["1", "2"]},
-	  "2": {title:, content:, userid: "1"}
-	  },
-  comment: {"1": {content:, userid: "1"}}
+{\
+  user: {"1": {username: jack, password: 12345}},\
+  profile: {"1": {username: kevin, image: smth.png, post: ["1", "2"]}},\
+  post: {"1": {title:abc, content: swhsuw, userid: "1", comment: ["1", "2"]},\
+	  "2": {title:, content:, userid: "1"}\
+	  },\
+  comment: {"1": {content:, userid: "1"}}\
 }
 
 
