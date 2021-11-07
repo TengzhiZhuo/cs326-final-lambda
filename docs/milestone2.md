@@ -67,5 +67,5 @@ url = "https:/  /rocky-tundra-99275.herokuapp.com/";
 
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: The server setup, the userPage html CRUD operations.
-* Yi Ding: 
+* Yi Ding: API design, html CRUD operations.
 * Hongxiang Wang: MainPage html CRUD operations.
