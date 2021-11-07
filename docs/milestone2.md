@@ -68,6 +68,6 @@ Example output:
 url = "https:/  /rocky-tundra-99275.herokuapp.com/";
 
 ## Breakdown of Labor Division
-* Tengzhi Zhuo: 
+* Tengzhi Zhuo: The server setup, the userPage html CRUD operations.
 * Yi Ding: 
-* Hongxiang Wang: 
+* Hongxiang Wang: MainPage html CRUD operations.
