@@ -5,6 +5,9 @@ import { get } from 'http';
 import path from 'path';
 const __dirname = path.resolve();
 
+//Heroku
+const url = "https:/  /rocky-tundra-99275.herokuapp.com/";
+
 let data = {};
 data['user'] = {};
 data['post'] = {};
