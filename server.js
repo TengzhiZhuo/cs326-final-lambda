@@ -1,8 +1,9 @@
 'use strict';
 import express from 'express';
 import * as fs from 'fs';
-// import path from 'path';
-// const __dirname = path.resolve();
+import { get } from 'http';
+import path from 'path';
+const __dirname = path.resolve();
 
 let data = {};
 data['user'] = {};
@@ -26,10 +27,12 @@ function reload(filename) {
 reload(JSONfile);
 let app = express();
 app.use(express.json());
-// //Static files Currently not successful...
-// app.use(express.static(__dirname + '/src/'));
-// app.use('/client', express.static(__dirname + 'client'));
-// app.use('/img', express.static(__dirname + 'img'));
+app.use(express.urlencoded({
+    extended: true
+  }));
+//Static files
+app.use(express.static(__dirname + '/src/client'));
+app.use(express.static(__dirname + '/src/img'));
 
 //Write Functions Here
 //Example:
@@ -42,10 +45,11 @@ app.use(express.json());
 //     });
 // });
 
-// //Render pages... Currently not successful...
-// app.get('', (req, res) => {
-//     res.sendFile(__dirname + '/src/client/mainPage.html');
-// });
+//Render pages...
+//UserPage
+app.get('', (req, res) => {
+    res.sendFile(__dirname + '/src/client/userPage.html');
+});
 
 //UserPage needed data
 app.get('/userPage', (req, res) => {
@@ -54,20 +58,15 @@ app.get('/userPage', (req, res) => {
 });
 
 app.post('/userPage/save', (req, res) => {
-    const value = req.body['value'];
-    const key = req.body['key'];
-    for (const v in value) {
-        if (!(key in data['user'])) {
-            data['user'][key] = {};
-        }
-        if (!(v in data['user'][key]))
-            data['user'][key][v] = {};
-        data['user'][key][v] = value[v];
+    const elements = req.body;
+    const key = req.body['id'];
+    delete elements['id'];
+    for (const element in elements) {
+        data['user'][key][element] = elements[element];
     }
     const string = JSON.stringify(data);
-    console.log(string);
     fs.writeFileSync(JSONfile, string);
-    res.send(data);
+    res.send();
 });
 
 //Server
