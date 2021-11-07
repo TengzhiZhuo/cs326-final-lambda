@@ -9,6 +9,7 @@ let data = {};
 data['user'] = {};
 data['post'] = {};
 data['comment'] = {};
+data['profile'] = {};
 const JSONfile = './database.json';
 
 //reload function
@@ -63,6 +64,30 @@ app.post('/userPage/save', (req, res) => {
     delete elements['id'];
     for (const element in elements) {
         data['user'][key][element] = elements[element];
+    }
+    const string = JSON.stringify(data);
+    fs.writeFileSync(JSONfile, string);
+    res.send();
+});
+
+app.post('/mainPage/save', (req, res) => {
+    const elements = req.body;
+    const key = req.body['id'];
+    delete elements['id'];
+    for (const element in elements) {
+        data['post'][key][element] = elements[element];
+    }
+    const string = JSON.stringify(data);
+    fs.writeFileSync(JSONfile, string);
+    res.send();
+});
+
+app.post('/signUp/save', (req, res) => {
+    const elements = req.body;
+    const key = req.body['id'];
+    delete elements['id'];
+    for (const element in elements) {
+        data['profile'][key][element] = elements[element];
     }
     const string = JSON.stringify(data);
     fs.writeFileSync(JSONfile, string);
