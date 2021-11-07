@@ -57,6 +57,10 @@ Example output:
 
 ## Front-end Implementation
 
+<img src="img/m2p1.png" alt="alt text" title="image Title"/>
+<img src="img/m2p2.png" alt="alt text" title="image Title"/>
+<img src="img/m2p3.png" alt="alt text" title="image Title"/>
+<img src="img/m2p4.png" alt="alt text" title="image Title"/>
 
 ## Heroku Application
 
