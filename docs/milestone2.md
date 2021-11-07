@@ -65,6 +65,8 @@ Example output:
 
 ## Heroku Application
 
+url = "https:/  /rocky-tundra-99275.herokuapp.com/";
+
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: 
 * Yi Ding: 
