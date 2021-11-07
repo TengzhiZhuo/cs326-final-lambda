@@ -20,27 +20,25 @@ Based on simple REST principles, the UShare Web API endpoints return JSON metada
 
 Data resources are accessed via standard HTTPS requests to an API endpoint. Basic routing which is method of the Express `app` object is being used to serve the files. `app.get()` is used to handle GET requests and `app.post` is used to handle POST requests
 
-GET /userPage : Retrieves user page data
-Post /userPage/save : Creates user page data identified by User ID
-
-Post /signUp/save : Save user username and password identified by User ID
-
-GET /mainPage : Retrieves main page data, including posts
-Post /mainPage/save : Creates main page data identified by Post ID
- 
-GET /singlePost : Retrieves single post page data, including posts and comments
-Post /singlePost/save : Creates single post page data identified by User ID
-
-GET /userPosts : Retrieves user posts data
-Post /userPosts/save : Creates user posts data identified by User ID and Post ID
+| Requests | Actions |
+| -------- | -------- |
+|GET /userPage | Retrieves user page data |
+|POST/userPage/save | Creates user page data identified by User ID|
+|POST /signUp/save | Save user username and password identified by User ID|
+|GET /mainPage | Retrieves posts data|
+|POST /mainPage/save | Creates the post data when a user create a new post|
+|GET /singlePost | Retrieves single post page data, including posts and comments |
+|POST /singlePost/save | Creates single post page data identified by User ID |
+|GET /userPosts | Retrieves user posts data |
+|POST /userPosts/save | Creates user posts data identified by User ID and Post ID |
 
 
 In requests to the Web API and responses from it, you will frequently encounter the following parameters:
 | Parameter | Description | Example |
 | -------- | -------- | -------- |
 | User Id  | The unique number identifying  was assigned to the user after they sign up and it helps identify the user's profile, posts and comments   | 1 |
-| Post Id  | The unique number identifying the user posts   | 1 |
-| Comment Id  | The unique number identifying the user comments  | 1 |
+| Post Id  | The unique number identifying the user posts   | 2 |
+| Comment Id  | The unique number identifying the user comments  | 3 |
 
 
 Web API returns all response data as a JSON object.
