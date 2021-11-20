@@ -1,4 +1,5 @@
 'use strict';
+window.id = null;
 
 async function getmainPageData() {
     const title = document.getElementById("title");
@@ -20,8 +21,11 @@ async function getmainPageData() {
 }
 
 function initialize() {
-    window.onload = getmainPageData();
-    document.getElementById("mainpagesubmit").addEventListener('click', ()=>{window.location.href="http://localhost:8080"});
+    // window.onload = getmainPageData();
+    // document.getElementById("backhomePage").addEventListener('click', goToHome);
+    // document.getElementById("profilePage").addEventListener('click', goToUserPage);
+    // document.getElementById("Login/SignOut").addEventListener('click', login);
+    // document.getElementById("mainpagesubmit").addEventListener('click', ()=>{window.location.href="http://localhost:8080"});
 }
 
 window.onload = initialize();

@@ -50,30 +50,45 @@ app.use(express.static(__dirname + '/src/img'));
 // });
 
 //Render pages...
-//UserPage
 app.get('', (req, res) => {
-    res.sendFile(__dirname + '/src/client/userPage.html');
+    res.redirect('/mainPage');
 });
 
-//UserPage needed data
+app.get('/header', (req, res) => {
+    
+});
+
+//UserPage
 app.get('/userPage', (req, res) => {
+    res.sendFile(__dirname + '/src/client/userPage.html')
+});
+
+app.get('/userPageData', (req, res) => {
     const key = data['user'][req.query['id']];
     res.send(key);
 });
 
-app.post('/userPage/save', (req, res) => {
+app.post('/userPage', (req, res) => {
     const elements = req.body;
     const key = req.body['id'];
     delete elements['id'];
     for (const element in elements) {
-        data['user'][key][element] = elements[element];
+        if (elements[element] !== null) {
+            data['user'][key][element] = elements[element];
+        }
     }
     const string = JSON.stringify(data);
     fs.writeFileSync(JSONfile, string);
     res.send();
 });
 
-app.post('/mainPage/save', (req, res) => {
+
+//MainPage
+app.get('/mainPage', (req, res) => {
+    res.sendFile(__dirname + '/src/client/mainPage.html')
+});
+
+app.post('/mainPage', (req, res) => {
     const elements = req.body;
     const key = req.body['id'];
     delete elements['id'];
@@ -83,6 +98,11 @@ app.post('/mainPage/save', (req, res) => {
     const string = JSON.stringify(data);
     fs.writeFileSync(JSONfile, string);
     res.send();
+});
+
+//SignUp Page
+app.get('/signUp', (req, res) => {
+    res.sendFile(__dirname + '/src/client/SignUp.html')
 });
 
 app.post('/signUp/save', (req, res) => {
@@ -95,6 +115,12 @@ app.post('/signUp/save', (req, res) => {
     const string = JSON.stringify(data);
     fs.writeFileSync(JSONfile, string);
     res.send();
+});
+
+
+//Login Page
+app.get('/login', (req, res) => {
+    res.sendFile(path.resolve(__dirname + '/src/client/LogInPage.html'));
 });
 
 //Server
