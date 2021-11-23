@@ -6,29 +6,20 @@
         <link rel="stylesheet" href="UShare.css">
     </head>
     <body>
-        <div id="header" class="container">
-            <div class="row">
-                <div class="col">
-                    <img src="/logoPic.png" class="content-Logo" alt="">
-                </div>
-                <div class="col">
-                    <form action="/header" method="get">
-                        <button type="home" class="btn btn-outline-danger content-Button" id="backhomePage" formaction="/mainPage">Home</button>
-                        <button type="profile" class="btn btn-outline-danger content-Button" id="profilePage" formaction="/userPage">User Profile</button>
-                        <button type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" formaction="/login">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <img src="img/logoPic.png" class="content-Logo" alt="">
+        <a type="home" class="btn btn-outline-danger content-Button" id="backhomePage" href="mainPage.html" role="button">Home</a>
+        <a type="profile" class="btn btn-outline-danger content-Button" id="profilePage" href="userPage.html" role="button">User Profile</a>
+        <a type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" href="LoginPage.html" role="button">Login</a>
         <br>
         <div class="content-Line"></div>
+
         <div class="mainPageAll">
         <div class="mainPageContent">
             <div class="mainPageHeader">Main page</div>
             <div class="card mainPageCard">
                 <div class="card-body">
                     <div class="mainPageUser">
-                        <img src="/userIcon.jpg" class="mainPageUserIcon" alt="">
+                        <img src="img/userIcon.jpg" class="mainPageUserIcon" alt="">
                         Username
                     </div>
                     <form action="http://localhost:8080/mainPage/save" method="post">
@@ -45,10 +36,10 @@
                             </div>
                     <div class="mainPagePostButton">
                         <button class="mainPageButton">
-                            <img class="mainPageButtonIcon" src="/locationIcon.png">
+                            <img class="mainPageButtonIcon" src="img/locationIcon.png">
                         </button>
                         <button class="mainPageButton">
-                            <img class="mainPageButtonIcon" src="/addImageIcon.png">
+                            <img class="mainPageButtonIcon" src="img/addImageIcon.png">
                         </button>
                         <button class="mainPageButton" id="mainpagesubmit">
                             Submit
@@ -65,7 +56,7 @@
                                 <p class="mainPageActualPostTitle">Post Title(Link)</p>
                             </div>
                             <div class="text-center mainPageActualPostImage">
-                                <img src="/tmpImage.png" alt="">
+                                <img src="img/tmpImage.png" alt="">
                             </div>
                         </div>
                         <div class="col-8">
@@ -84,7 +75,7 @@
                                 <p class="mainPageActualPostTitle">Post Title(Link)</p>
                             </div>
                             <div class="text-center mainPageActualPostImage">
-                                <img src="/tmpImage.png" alt="">
+                                <img src="img/tmpImage.png" alt="">
                             </div>
                         </div>
                         <div class="col-8">
@@ -103,7 +94,7 @@
                                 <p class="mainPageActualPostTitle">Post Title(Link)</p>
                             </div>
                             <div class="text-center mainPageActualPostImage">
-                                <img src="/tmpImage.png" alt="">
+                                <img src="img/tmpImage.png" alt="">
                             </div>
                         </div>
                         <div class="col-8">

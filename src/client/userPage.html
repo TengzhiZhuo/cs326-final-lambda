@@ -6,27 +6,18 @@
         <link rel="stylesheet" href="UShare.css">
     </head>
     <body>
-        <div id="header" class="container">
-            <div class="row">
-                <div class="col">
-                    <img src="/logoPic.png" class="content-Logo" alt="">
-                </div>
-                <div class="col">
-                    <form action="/header" method="get">
-                        <button type="home" class="btn btn-outline-danger content-Button" id="backhomePage" formaction="/mainPage">Home</button>
-                        <button type="profile" class="btn btn-outline-danger content-Button" id="profilePage" formaction="/userPage">User Profile</button>
-                        <button type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" formaction="/login">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <img src="img/logoPic.png" class="content-Logo" alt="">
+        <a type="home" class="btn btn-outline-danger content-Button" id="backhomePage" href="mainPage.html" role="button">Home</a>
+        <a type="profile" class="btn btn-outline-danger content-Button" id="profilePage" href="userPage.html" role="button">User Profile</a>
+        <a type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" href="LoginPage.html" role="button">Login</a>
         <br>
         <div class="content-Line"></div>
+        
         <div class="userProContent">
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <img src="/userIcon.jpg" class="userIcon" alt="">
+                        <img src="img/userIcon.jpg" class="userIcon" alt="">
                     </div>
                     <div class="col text-center">
                         <div class="userName" id="userName"></div>
