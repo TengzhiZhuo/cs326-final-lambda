@@ -124,6 +124,4 @@ app.get('/login', (req, res) => {
 });
 
 //Server
-app.listen(process.env.PORT || 8080, function() {
-    console.log("App avaliable on http://localhost:8080");
-});
+app.listen(process.env.PORT || 8080);
