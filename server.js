@@ -76,7 +76,10 @@ createServer(async (req, res) => {
             const data = JSON.parse(body);
             database.user.push({
                 username: data.username,
-                password: data.password
+                password: data.password,
+            });
+            database.profile.push({
+                username: data.username,
             });
             
             writeFile("database.json", JSON.stringify(database), err => {
