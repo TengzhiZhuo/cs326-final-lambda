@@ -9,7 +9,7 @@ const __dirname = path.resolve();
 //Heroku
 const url = "https://rocky-tundra-99275.herokuapp.com/";
 const mongoDBurl = "mongodb+srv://tzhuo:cs326Lambda@cluster0.2noog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
-const client = new MongoClient(url);
+const client = new MongoClient(mongoDBurl);
 await client.connect();
 const db = client.db("UShare");
 const collection1 = db.collection("user");
