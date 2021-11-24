@@ -6,7 +6,7 @@ import path from 'path';
 const __dirname = path.resolve();
 
 //Heroku
-const url = "https:/  /rocky-tundra-99275.herokuapp.com/";
+const url = "https://rocky-tundra-99275.herokuapp.com/";
 
 let data = {};
 data['user'] = {};
@@ -124,6 +124,6 @@ app.get('/login', (req, res) => {
 });
 
 //Server
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
     console.log("App avaliable on http://localhost:8080");
 });
