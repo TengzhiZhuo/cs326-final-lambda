@@ -3,10 +3,24 @@ import express from 'express';
 import * as fs from 'fs';
 import { get } from 'http';
 import path from 'path';
+import { MongoClient } from 'mongodb';
 const __dirname = path.resolve();
 
 //Heroku
 const url = "https://rocky-tundra-99275.herokuapp.com/";
+const mongoDBurl = "mongodb+srv://tzhuo:cs326Lambda@cluster0.2noog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
+const client = new MongoClient(url);
+await client.connect();
+const db = client.db("UShare");
+const collection1 = db.collection("user");
+const collection2 = db.collection("post");
+const collection3 = db.collection("comment");
+const collection4 = db.collection("profile");
+
+const user = await collection1.find().toArray();
+const post = await collection2.find().toArray();
+const comment = await collection3.find().toArray();
+const profile = await collection4.find().toArray();
 
 let data = {};
 data['user'] = {};
@@ -125,3 +139,5 @@ app.get('/login', (req, res) => {
 
 //Server
 app.listen(process.env.PORT || 8080);
+
+await client.close();
