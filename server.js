@@ -88,6 +88,28 @@ createServer(async (req, res) => {
                 } else res.end();
             });
         });
+    } else if (parsed.pathname === '/userpagesubmit') {
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', () => {
+            const data = JSON.parse(body);
+            let num = 0;
+            for(var i = 0; i < database.profile.length; i++) {
+                if ((database.profile)[i].username === data.username) {
+                    found = true;
+                    num = i;
+                    break;
+                }
+            }
+            (database.profile)[num].graduation = data.graduation;
+            (database.profile)[num].interest = data.interest;
+            (database.profile)[num].major = data.major;
+            (database.profile)[num].minor = data.minor;          
+        });
+    } else if (parsed.pathname === '/getProfile') {
+        res.end(JSON.stringify(
+            database.profile
+        ));       
     } else if (parsed.pathname === '/getPost') {
         res.end(JSON.stringify(
             database.post

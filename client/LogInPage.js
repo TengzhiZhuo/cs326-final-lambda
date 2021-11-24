@@ -1,5 +1,7 @@
 'use strict';
 
+export let curUser;
+
 document.getElementById('loginSubmit').addEventListener('click', async () => {
     const username = document.getElementById("loginUsername").value;
     const password = document.getElementById("loginPassword").value;
@@ -13,9 +15,10 @@ document.getElementById('loginSubmit').addEventListener('click', async () => {
       const suc = await response.json();
       console.log(suc);
       if(suc){
-          window.user = username;
+          curUser = username;
           location.href='mainPage.html';
       } else {
           alert("Wrong Username or Password");
       }
 });
+
