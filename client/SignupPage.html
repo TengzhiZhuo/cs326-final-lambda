@@ -13,18 +13,19 @@
         <img src="img/logoPic.png" class="login-Logo" alt=""><br>
         <div class="login-Line login-Center"></div><br>
         
-        <form class="login-Form" action="http://localhost:8080/signUp/save" method="post">
+        <form>
           <div class="row mb-3 justify-content-center">
             <label for="InputUsername" class="col-sm-1 col-form-label"><h6 class="mb-0 text-sm">Username:</h6></label>
-            <div class="col-sm-3"><input type="text" class="form-control" name="user" id="user"></div>
+            <div class="col-sm-3"><input class="form-control" id="signupUsername"></div>
           </div>
           <div class="row mb-3 justify-content-center">
             <label for="InputPassword" class="col-sm-1 col-form-label"><h6 class="mb-0 text-sm">Password:</h6></label>
-            <div class="col-sm-3"><input type="password" class="form-control" name="password" id="password"></div>
+            <div class="col-sm-3"><input class="form-control" id="signupPassword"></div>
           </div>
-          <button class="btn btn-danger" id="signuppagesubmit">Sign up</button>
+          <button class="btn btn-danger" id="signupSubmit">Sign up</button>
         </form><br>
     </div>
+    <script src="./SignUpPage.js"></script>
     </body>
 
 </html>

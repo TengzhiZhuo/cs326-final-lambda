@@ -45,7 +45,8 @@ if (existsSync("database.json")) {
     database = {
         post: [],
         user: [],
-        profile: []
+        profile: [],
+        comment: []
     };
 }
 
@@ -68,14 +69,14 @@ createServer(async (req, res) => {
                 } else res.end();
             });
         });
-    } else if (parsed.pathname === '/gameScore') {
+    } else if (parsed.pathname === '/signupsubmit') {
         let body = '';
         req.on('data', data => body += data);
         req.on('end', () => {
             const data = JSON.parse(body);
-            database.gameScores.push({
-                name: data.name,
-                score: data.score
+            database.user.push({
+                username: data.username,
+                password: data.password
             });
             
             writeFile("database.json", JSON.stringify(database), err => {
@@ -83,23 +84,12 @@ createServer(async (req, res) => {
                     console.err(err);
                 } else res.end();
             });
-
-            res.end(JSON.stringify(
-                database.post
-            ));
         });
     } else if (parsed.pathname === '/getPost') {
         res.end(JSON.stringify(
             database.post
         ));
-    } else if (parsed.pathname === '/highestGameScores') {
-        res.end(JSON.stringify(
-            database.gameScores.sort((a, b) => b.score - a.score).filter((v, i) => i < 10)
-        ));
     } else {
-        // If the client did not request an API endpoint, we assume we need to fetch and serve a file.
-        // This is terrible security-wise, since we don't check the file requested is in the same directory.
-        // This will do for our purposes.
         const filename = parsed.pathname === '/' ? "index.html" : parsed.pathname.replace('/', '');
         const path = join("client/", filename);
         console.log("trying to serve " + path + "...");
@@ -113,10 +103,6 @@ createServer(async (req, res) => {
             if (filename.endsWith("css")) {
                 res.writeHead(200, {"Content-Type" : "text/css"});
             }
-            // TODO you need to check for other filetypes and write the correct MIME type in the header.
-            // Without these, the browser is sometime incapable of interpreting the file as it should
-            // (Notably for JS files)
-
             res.write(readFileSync(path));
             res.end();
         } else {
