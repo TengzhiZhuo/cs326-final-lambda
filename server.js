@@ -76,7 +76,7 @@ createServer(async (req, res) => {
             const data = JSON.parse(body);
             database.user.push({
                 username: data.username,
-                password: data.password,
+                password: data.password
             });
             database.profile.push({
                 username: data.username,
@@ -91,7 +91,29 @@ createServer(async (req, res) => {
     } else if (parsed.pathname === '/getPost') {
         res.end(JSON.stringify(
             database.post
-        ));
+        ));       
+    } else if (parsed.pathname === '/loginsubmit') {
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', () => {
+            const data = JSON.parse(body);
+            var found = false;
+            for(var i = 0; i < database.user.length; i++) {
+                if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                res.end(JSON.stringify(
+                    true
+                ));    
+            }   else {
+                res.end(JSON.stringify(
+                    false
+                ));
+            }
+        });
     } else {
         const filename = parsed.pathname === '/' ? "index.html" : parsed.pathname.replace('/', '');
         const path = join("client/", filename);

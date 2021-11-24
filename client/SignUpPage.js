@@ -10,6 +10,6 @@ document.getElementById('signupSubmit').addEventListener('click', async () => {
         },
         body: JSON.stringify({ username : username, password : password})
       });
-    location.href='LogInPage.html';
-    alert("Sign Up Succed!");
+      location.href='index.html';
+      alert("Sign Up Succed!");
 });
