@@ -16,6 +16,7 @@ UShare
 
 ## Database Documentation
 
+The first collection of our database is the users' data. It includes the username and password created by the users.
 ```
 user document
 {	
@@ -24,7 +25,7 @@ user document
     password: Integer  // The password entered by the user
 }
 ```
-
+The Second collection of our database is the data of the users' posts. It includes the username of the user who submitted the post, as well as the title, contents, and images of the post.
 ```
 post document
 {
@@ -36,7 +37,7 @@ post document
     image2: String // The name of the second image
 }
 ```
-
+The third collection of our database is the comments under a specific post. It includes the username of the user, post title, content of the comment, and comment postion.
 ```
 comment document
 {
@@ -47,7 +48,7 @@ comment document
     position: Integer // The position of the comment in the post
 }
 ```
-
+The forth collection of our database is the users' profile data. It includes the username, graduation year, major, minor, interest, and avaster entered by the users.
 ```
 profile document
 {
@@ -64,5 +65,5 @@ profile document
 
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: Modified CRUD operations and backend codes of user page, signup page, implement Mongodb database.
-* Yi Ding: 
+* Yi Ding: html CRUD operations, edited mileston.md file, wrote Database Documentation
 * Hongxiang Wang: Modified CRUD operations and backend codes of login page, signup page, main page.
