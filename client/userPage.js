@@ -16,11 +16,11 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
       });
 });
 
-//window.onload = async function (){
-  //const response1 = await fetch('/getProfile');
-  //const postArr = await response1.json();
-  //document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).title);
-  //document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).content);
-  //document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 2]).title);
-  //document.getElementById("graduation").value = 
-//}
+// window.onload = async function () {
+//   const response1 = await fetch('/getProfile');
+//   const postArr = await response1.json();
+//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).title);
+//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).content);
+//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 2]).title);
+//   document.getElementById("graduation").value = 
+// }

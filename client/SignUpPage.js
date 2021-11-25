@@ -10,6 +10,14 @@ document.getElementById('signupSubmit').addEventListener('click', async () => {
         },
         body: JSON.stringify({ username : username, password : password})
       });
-      location.href='index.html';
-      alert("Sign Up Succed!");
+      console.log("hi");
+      const check = await response.json();
+      console.log(check);
+      if (check === true) {
+        alert("Username Already Existed!");
+      }
+      else {
+        location.href='index.html';
+        alert("Sign Up Succed!");
+      }
 });

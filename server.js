@@ -1,6 +1,6 @@
 'use strict';
 
-//import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import express from 'express';
 import * as fs from 'fs';
 import { get } from 'http';
@@ -12,43 +12,46 @@ import {writeFile, readFileSync, existsSync} from 'fs';
 
 const __dirname = path.resolve();
 
-// Heroku
-// const url = "https://rocky-tundra-99275.herokuapp.com/";
-// const mongoDBurl = "mongodb+srv://tzhuo:cs326Lambda@cluster0.2noog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
-// const client = new MongoClient(mongoDBurl);
-// await client.connect();
-// const db = client.db("UShare");
-// const collection1 = db.collection("user");
-// const collection2 = db.collection("post");
-// const collection3 = db.collection("comment");
-// const collection4 = db.collection("profile");
-
-// const user = await collection1.find().toArray();
-// const post = await collection2.find().toArray();
-// const comment = await collection3.find().toArray();
-// const profile = await collection4.find().toArray();
-
-// let data = {};
-// data['user'] = {};
-// data['post'] = {};
-// data['comment'] = {};
-// data['profile'] = {};
-// const JSONfile = './database.json';
-
 //Heroku
-// "https:/  /rocky-tundra-99275.herokuapp.com/";
+const url = "https://rocky-tundra-99275.herokuapp.com/";
 
-let database;
-if (existsSync("database.json")) {
-    database = JSON.parse(readFileSync("database.json"));
-} else {
-    database = {
-        post: [],
-        user: [],
-        profile: [],
-        comment: []
-    };
+//MongoDB SetUp
+const mongoDBurl = "mongodb+srv://tzhuo:cs326Lambda@cluster0.2noog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
+const client = new MongoClient(mongoDBurl);
+try {
+    await client.connect();
+    console.log("Connected correctly to server");
+} catch (err) {
+    console.log(err.stack);
 }
+const db = client.db("UShare");
+const collection1 = db.collection("user");
+const collection2 = db.collection("post");
+const collection3 = db.collection("comment");
+const collection4 = db.collection("profile");
+
+const user = await collection1.find().toArray();
+const post = await collection2.find().toArray();
+const comment = await collection3.find().toArray();
+const profile = await collection4.find().toArray();
+
+let database = {};
+database['user'] = user;
+database['post'] = post;
+database['comment'] = comment;
+database['profile'] = profile;
+
+// let database;
+// if (existsSync("database.json")) {
+//     database = JSON.parse(readFileSync("database.json"));
+// } else {
+//     database = {
+//         post: [],
+//         user: [],
+//         profile: [],
+//         comment: []
+//     };
+// }
 
 createServer(async (req, res) => {
     const parsed = parse(req.url, true);
@@ -56,42 +59,47 @@ createServer(async (req, res) => {
     if (parsed.pathname === '/postsubmit') {
         let body = '';
         req.on('data', data => body += data);
-        req.on('end', () => {
+        req.on('end', async () => {
             const data = JSON.parse(body);
-            database.post.push({
+            const output = {
                 title: data.title,
                 content: data.content
+            };
+            database.post.push(output);
+            client.connect(err => {
+                collection2.insertOne(output);
             });
-            
-            writeFile("database.json", JSON.stringify(database), err => {
-                if (err) {
-                    console.err(err);
-                } else res.end();
-            });
+            await client.close();
         });
     } else if (parsed.pathname === '/signupsubmit') {
         let body = '';
+        let result = false;
         req.on('data', data => body += data);
-        req.on('end', () => {
+        req.on('end', async () => {
             const data = JSON.parse(body);
-            database.user.push({
+            const output = {
                 username: data.username,
                 password: data.password
-            });
-            database.profile.push({
-                username: data.username,
-            });
-            
-            writeFile("database.json", JSON.stringify(database), err => {
-                if (err) {
-                    console.err(err);
-                } else res.end();
-            });
+            };
+            for (let element of database.user) {
+                if (output.username === element.username) {
+                    result = true;
+                    break
+                }
+            }
+            if (!result) {
+                database.user.push(output);
+                client.connect(err => {
+                    collection1.insertOne(output);
+                });
+                await client.close();
+            }
+            res.end(JSON.stringify(result));
         });
     } else if (parsed.pathname === '/userpagesubmit') {
         let body = '';
         req.on('data', data => body += data);
-        req.on('end', () => {
+        req.on('end', async () => {
             const data = JSON.parse(body);
             let num = 0;
             for(var i = 0; i < database.profile.length; i++) {
@@ -104,7 +112,21 @@ createServer(async (req, res) => {
             (database.profile)[num].graduation = data.graduation;
             (database.profile)[num].interest = data.interest;
             (database.profile)[num].major = data.major;
-            (database.profile)[num].minor = data.minor;          
+            (database.profile)[num].minor = data.minor;    
+            client.connect(err => {
+                collection4.update(
+                    { 
+                        "username": data.username 
+                    },
+                    {
+                        graduation: data.graduation,
+                        interest: data.interest,
+                        major: data.major,
+                        minor: data.minor
+                    }
+                );  
+            });
+            await client.close(); 
         });
     } else if (parsed.pathname === '/getProfile') {
         res.end(JSON.stringify(
@@ -157,5 +179,7 @@ createServer(async (req, res) => {
             res.end();
         }
     }
-}).listen(8080);
+}).listen(process.env.PORT || 8080);
 //process.env.PORT || 8080
+
+await client.close();
