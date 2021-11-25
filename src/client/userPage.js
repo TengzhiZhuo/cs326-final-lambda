@@ -7,7 +7,7 @@ async function getUserPageData() {
     const major = document.getElementById("major");
     const minor = document.getElementById("minor");
     const interest = document.getElementById("interest");
-    const url = "http://localhost:8080/userPage?id=1";
+    const url = "/userPageData?id="+window.id;
     const response = await(fetch(url));
     if (response.status !== 404) {
         const responseJson = await response.json();
@@ -35,17 +35,28 @@ async function getUserPageData() {
     }
 }
 
-// async function submitUserPageData() {
-//     const graduation = document.getElementById("graduation");
-//     const major = document.getElementById("major");
-//     const minor = document.getElementById("minor");
-//     const interest = document.getElementById("interest");
-//     const url = "http://localhost:8080/userPage?id=1";
-// }
+async function submitUserPageData() {
+    const graduation = document.getElementById("graduation");
+    const major = document.getElementById("major");
+    const minor = document.getElementById("minor");
+    const interest = document.getElementById("interest");
+    const url = "/userPage";
+    const resposne = await fetch(url, {
+        method: "post",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            id: window.id,
+            graduation: graduation,
+            major: major,
+            minor: minor,
+            interest: interest
+        })
+    });
+}
 
 function initialize() {
     window.onload = getUserPageData();
-    document.getElementById("submit").addEventListener('click', ()=>{window.location.href="http://localhost:8080"});
+    document.getElementById("submit").addEventListener('click', submitUserPageData);
 }
 
 window.onload = initialize();
