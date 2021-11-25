@@ -13,7 +13,7 @@ import {writeFile, readFileSync, existsSync} from 'fs';
 const __dirname = path.resolve();
 
 //Heroku
-const url = "https://rocky-tundra-99275.herokuapp.com/";
+const url = "https://still-eyrie-05011.herokuapp.com/";
 
 //MongoDB SetUp
 const mongoDBurl = "mongodb+srv://tzhuo:cs326Lambda@cluster0.2noog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
