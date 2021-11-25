@@ -158,12 +158,12 @@ createServer(async (req, res) => {
             }
 
             var found = false;
-            //for(var i = 0; i < database.user.length; i++) {
-                //if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
-                    //found = true;
-                    //break;
-                //}
-            //}
+            for(var i = 0; i < database.user.length; i++) {
+                if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+                    found = true;
+                    break;
+                }
+            }
             if (data.password === password && data.username === username) {
                 found = true;
             }
