@@ -1,4 +1,4 @@
-# Milestone2
+# Milestone 3
 
 ## Team Name
 
@@ -16,13 +16,16 @@ UShare
 
 ## Database Documentation
 
+```
 user document
 {	
     _id: <ObjectId1>, 
     username: String,  // The name of the user
     password: Integer  // The password entered by the user
 }
+```
 
+```
 post document
 {
     _id: <ObjectId2>,
@@ -32,7 +35,9 @@ post document
     image1: String, // The name of the first image
     image2: String // The name of the second image
 }
+```
 
+```
 comment document
 {
     _id: <ObjectId3>,
@@ -41,7 +46,9 @@ comment document
     content: String,  // The content of this comment
     position: Integer // The position of the comment in the post
 }
+```
 
+```
 profile document
 {
     _id: <ObjectId4>,
@@ -52,6 +59,7 @@ profile document
     interest: String, // The interest of the user
     avatar: String // The name of the image of user's avatar
 }
+```
 
 
 ## Breakdown of Labor Division
