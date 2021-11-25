@@ -149,6 +149,13 @@ createServer(async (req, res) => {
             } else {
                 password = process.env.PASSWORD;
             }
+            let username;
+            if (!process.env.USERNAME) {
+                secrets = require('secrets.json');
+                username = secrets.username;
+            } else {
+                username = process.env.USERNAME;
+            }
 
             var found = false;
             //for(var i = 0; i < database.user.length; i++) {
@@ -157,7 +164,7 @@ createServer(async (req, res) => {
                     //break;
                 //}
             //}
-            if (data.password === password) {
+            if (data.password === password && data.username === username) {
                 found = true;
             }
             if (found) {
