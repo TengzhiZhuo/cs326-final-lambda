@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <link rel="stylesheet" href="UShare.css" />
+    </head>
+
+    <body>
+    <div class="text-center">
+        <img src="img/logoPic.png" class="login-Logo" alt=""><br>
+        <div class="login-Line login-Center"></div><br>
+        
+        <form class="login-Form">
+          <div class="row mb-3 justify-content-center">
+            <label for="InputUsername" class="col-sm-1 col-form-label"><h6 class="mb-0 text-sm">Username:</h6></label>
+            <div class="col-sm-3"><input class="form-control" id="loginUsername"></div>
+          </div>
+          <div class="row mb-3 justify-content-center">
+            <label for="InputPassword" class="col-sm-1 col-form-label"><h6 class="mb-0 text-sm">Password:</h6></label>
+            <div class="col-sm-3"><input class="form-control" id="loginPassword"></div>
+          </div>
+          <button class="btn btn-danger" id="loginSubmit">Login</button>
+        </form><br>
+        
+        <div>Don't have an account?
+        <a href="SignupPage.html">Sign up</a></div>
+    </div>
+    <script type="module" src="./LogInPage.js"></script>
+    </body>
+
+</html>
