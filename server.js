@@ -141,12 +141,24 @@ createServer(async (req, res) => {
         req.on('data', data => body += data);
         req.on('end', () => {
             const data = JSON.parse(body);
+            let secrets;
+            let password;
+            if (!process.env.PASSWORD) {
+                secrets = require('secrets.json');
+                password = secrets.password;
+            } else {
+                password = process.env.PASSWORD;
+            }
+
             var found = false;
-            for(var i = 0; i < database.user.length; i++) {
-                if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
-                    found = true;
-                    break;
-                }
+            //for(var i = 0; i < database.user.length; i++) {
+                //if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+                    //found = true;
+                    //break;
+                //}
+            //}
+            if (data.password === password) {
+                found = true;
             }
             if (found) {
                 res.end(JSON.stringify(
