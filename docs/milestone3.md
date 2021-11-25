@@ -64,5 +64,5 @@ profile document
 
 ## Breakdown of Labor Division
 * Tengzhi Zhuo: Modified CRUD operations and backend codes of user page, signup page, implement Mongodb database.
-* Yi Ding: 
+* Yi Ding: Writing the MD file, designing the database, implement Mongodb database.
 * Hongxiang Wang: Modified CRUD operations and backend codes of login page, signup page, main page.
