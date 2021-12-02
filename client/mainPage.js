@@ -14,6 +14,7 @@ document.getElementById('mainpagesubmit').addEventListener('click', async () => 
 
 window.onload = async function (){
   const response1 = await fetch('/getPost');
+  console.log(window.curUser);
   const postArr = await response1.json();
   document.getElementById('posttitle1').innerHTML = JSON.stringify((postArr[postArr.length - 1]).title);
   document.getElementById('postcontent1').innerHTML = JSON.stringify((postArr[postArr.length - 1]).content);

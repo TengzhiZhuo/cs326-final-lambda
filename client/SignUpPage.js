@@ -10,10 +10,8 @@ document.getElementById('signupSubmit').addEventListener('click', async () => {
         },
         body: JSON.stringify({ username : username, password : password})
       });
-      console.log("hi");
       const check = await response.json();
-      console.log(check);
-      if (check === true) {
+      if (check) {
         alert("Username Already Existed!");
       }
       else {

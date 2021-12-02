@@ -1,9 +1,6 @@
 'use strict';
 
 import { MongoClient } from 'mongodb';
-import express from 'express';
-import * as fs from 'fs';
-import { get } from 'http';
 import path from 'path';
 import {createServer} from 'http';
 import {parse} from 'url';
@@ -24,6 +21,7 @@ try {
 } catch (err) {
     console.log(err.stack);
 }
+
 const db = client.db("UShare");
 const collection1 = db.collection("user");
 const collection2 = db.collection("post");
@@ -137,35 +135,56 @@ createServer(async (req, res) => {
             database.post
         ));       
     } else if (parsed.pathname === '/loginsubmit') {
+        // let body = '';
+        // req.on('data', data => body += data);
+        // req.on('end', () => {
+        //     const data = JSON.parse(body);
+        //     let secrets;
+        //     let password;
+        //     if (!process.env.PASSWORD) {
+        //         secrets = require('secrets.json');
+        //         password = secrets.password;
+        //     } else {
+        //         password = process.env.PASSWORD;
+        //     }
+        //     let username;
+        //     if (!process.env.USERNAME) {
+        //         secrets = require('secrets.json');
+        //         username = secrets.username;
+        //     } else {
+        //         username = process.env.USERNAME;
+        //     }
+
+        //     var found = false;
+        //     for(var i = 0; i < database.user.length; i++) {
+        //         if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+        //             found = true;
+        //             break;
+        //         }
+        //     }
+        //     if (data.password === password && data.username === username) {
+        //         found = true;
+        //     }
+        //     if (found) {
+        //         res.end(JSON.stringify(
+        //             true
+        //         ));    
+        //     }   else {
+        //         res.end(JSON.stringify(
+        //             false
+        //         ));
+        //     }
+        // });
         let body = '';
         req.on('data', data => body += data);
         req.on('end', () => {
             const data = JSON.parse(body);
-            let secrets;
-            let password;
-            if (!process.env.PASSWORD) {
-                secrets = require('secrets.json');
-                password = secrets.password;
-            } else {
-                password = process.env.PASSWORD;
-            }
-            let username;
-            if (!process.env.USERNAME) {
-                secrets = require('secrets.json');
-                username = secrets.username;
-            } else {
-                username = process.env.USERNAME;
-            }
-
             var found = false;
             for(var i = 0; i < database.user.length; i++) {
                 if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
                     found = true;
                     break;
                 }
-            }
-            if (data.password === password && data.username === username) {
-                found = true;
             }
             if (found) {
                 res.end(JSON.stringify(
