@@ -5,7 +5,7 @@ let curUser = '';
 document.getElementById('mainpagesubmit').addEventListener('click', async () => {
     const title = document.getElementById("mainpagetitle").value;
     const content = document.getElementById("mainpagecontent").value;
-    // location.href='mainPage.html?user=' + curUser;
+    location.href='mainPage.html?user=' + curUser;
     const response = await fetch("/postsubmit", {
         method: "post",
         headers: {
@@ -13,7 +13,6 @@ document.getElementById('mainpagesubmit').addEventListener('click', async () => 
         },
         body: JSON.stringify({ username : curUser, title : title, content : content})
       });
-      location.href='mainPage.html?user=' + curUser;
 });
 
 document.getElementById('profilePage').addEventListener('click', () => {

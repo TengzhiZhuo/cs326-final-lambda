@@ -45,7 +45,7 @@ window.onload = async function (){
   document.getElementById('postComment').addEventListener('click', async () => {
     const post = document.getElementById("contentTitle").innerHTML;
     const content = document.getElementById("userComment").value;
-    // location.href = 'contentPage.html?post=' + curPost +'&user=' + curUser;
+    location.href = 'contentPage.html?post=' + curPost +'&user=' + curUser;
     const response = await fetch("/commentsubmit", {
         method: "post",
         headers: {
@@ -53,7 +53,6 @@ window.onload = async function (){
         },
         body: JSON.stringify({ username : curUser, post : post, content : content})
       });
-      location.href = 'contentPage.html?post=' + curPost +'&user=' + curUser;
 });
 
   document.getElementById('profilePage').addEventListener('click', () => {
