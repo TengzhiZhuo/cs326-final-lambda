@@ -56,7 +56,6 @@ createServer(async (req, res) => {
             client.connect(err => {
                 collection2.insertOne(output);
             });
-            await client.close();
         });
     } else if (parsed.pathname === '/commentsubmit') {
         let body = '';
@@ -72,7 +71,7 @@ createServer(async (req, res) => {
             client.connect(err => {
                 collection3.insertOne(output);
             });
-            await client.close();
+        
         });
     } else if (parsed.pathname === '/signupsubmit') {
         let body = '';
@@ -84,6 +83,9 @@ createServer(async (req, res) => {
                 username: data.username,
                 password: data.password
             };
+            const output2 = {
+                username: data.username
+            }
             for (let element of database.user) {
                 if (output.username === element.username) {
                     result = true;
@@ -94,8 +96,9 @@ createServer(async (req, res) => {
                 database.user.push(output);
                 client.connect(err => {
                     collection1.insertOne(output);
+                    collection4.insertOne(output2);
                 });
-                await client.close();
+            
             }
             res.end(JSON.stringify(result));
         });
@@ -107,7 +110,6 @@ createServer(async (req, res) => {
             let num = 0;
             for(var i = 0; i < database.profile.length; i++) {
                 if ((database.profile)[i].username === data.username) {
-                    found = true;
                     num = i;
                     break;
                 }
@@ -115,21 +117,23 @@ createServer(async (req, res) => {
             (database.profile)[num].graduation = data.graduation;
             (database.profile)[num].interest = data.interest;
             (database.profile)[num].major = data.major;
-            (database.profile)[num].minor = data.minor;    
+            (database.profile)[num].minor = data.minor;
             client.connect(err => {
-                collection4.update(
+                collection4.updateOne(
                     { 
-                        "username": data.username 
+                        username: data.username 
                     },
-                    {
-                        graduation: data.graduation,
-                        interest: data.interest,
-                        major: data.major,
-                        minor: data.minor
+                    {$set:
+                        {
+                            graduation: data.graduation,
+                            interest: data.interest,
+                            major: data.major,
+                            minor: data.minor
+                        }
                     }
                 );  
             });
-            await client.close(); 
+         
         });
     } else if (parsed.pathname === '/getProfile') {
         res.end(JSON.stringify(
@@ -142,7 +146,7 @@ createServer(async (req, res) => {
     } else if (parsed.pathname === '/getComment') {
         res.end(JSON.stringify(
             database.comment
-        ));       
+        ));
     } else if (parsed.pathname === '/loginsubmit') {
         // let body = '';
         // req.on('data', data => body += data);
@@ -228,5 +232,3 @@ createServer(async (req, res) => {
     }
 }).listen(process.env.PORT || 8080);
 //process.env.PORT || 8080
-
-await client.close();
