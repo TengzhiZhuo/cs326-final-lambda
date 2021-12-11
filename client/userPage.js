@@ -1,6 +1,6 @@
 'use strict';
 
-import {curUser} from './LogInPage.js';
+let curUser = '';
 
 document.getElementById('userpagesubmit').addEventListener('click', async () => {
     const graduation = document.getElementById("graduation").value;
@@ -16,6 +16,17 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
       });
 });
 
+
+window.onload = async function (){
+  const response1 = await fetch('/getProfile');
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const postArr = await response1.json();
+  if(urlParams.get('id') !== null){
+    location.href='userPage.html?user=' + ((postArr[postArr.length - 1]).username);
+  }
+  curUser = urlParams.get('user'); 
+}
 // window.onload = async function () {
 //   const response1 = await fetch('/getProfile');
 //   const postArr = await response1.json();
