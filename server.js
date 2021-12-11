@@ -95,7 +95,7 @@ createServer(async (req, res) => {
             }
             res.end(JSON.stringify(result));
         });
-    } else if (parsed.pathname === '/userpagesubmit') {
+    } else if (parsed.pathname === '/profilesubmit') {
         let body = '';
         req.on('data', data => body += data);
         req.on('end', async () => {

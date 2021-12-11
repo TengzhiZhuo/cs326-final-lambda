@@ -190,7 +190,7 @@
     font-weight: 700;
     font-size: 18px;
     text-align: center;
-    color: #4C6AA3;
+    color: black;
 
     margin: auto;
 }
@@ -211,4 +211,16 @@
 .login-Form{
     margin-left: 20px;
     margin-right: 20px;
+}
+
+#card1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+#card2:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+#card3:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
 }

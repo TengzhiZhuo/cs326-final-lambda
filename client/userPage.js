@@ -16,6 +16,13 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
       });
 });
 
+document.getElementById('backhomePage').addEventListener('click', () => {
+  location.href='mainPage.html?user=' + curUser;
+})
+
+document.getElementById('profilePage').addEventListener('click', () => {
+  location.href='userPage.html?user=' + curUser;
+})
 
 window.onload = async function (){
   const response1 = await fetch('/getProfile');
@@ -26,6 +33,7 @@ window.onload = async function (){
     location.href='userPage.html?user=' + ((postArr[postArr.length - 1]).username);
   }
   curUser = urlParams.get('user'); 
+  document.getElementById('userpageName').innerHTML = curUser;
 }
 // window.onload = async function () {
 //   const response1 = await fetch('/getProfile');
