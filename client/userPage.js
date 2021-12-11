@@ -37,9 +37,7 @@ window.onload = async function (){
   let minor = document.getElementById("minor");
   let interest = document.getElementById("interest");
   for (let i = 0; i < profileArr.length; i++) {
-    console.log(profileArr[i]);
     if(profileArr[i].username === curUser) {
-      console.log('hi');
       graduation.value = profileArr[i].graduation;
       major.value = profileArr[i].major;
       minor.value = profileArr[i].minor;
