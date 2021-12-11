@@ -32,7 +32,7 @@ const user = await collection1.find().toArray();
 const post = await collection2.find().toArray();
 const comment = await collection3.find().toArray();
 const profile = await collection4.find().toArray();
-
+//
 let database = {};
 database['user'] = user;
 database['post'] = post;
