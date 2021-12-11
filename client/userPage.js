@@ -29,9 +29,6 @@ window.onload = async function (){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const profileArr = await response1.json();
-  if(urlParams.get('id') !== null){
-    location.href='userPage.html?user=' + ((profileArr[profileArr.length - 1]).username);
-  }
   curUser = urlParams.get('user'); 
   document.getElementById('userpageName').innerHTML = curUser;
   let graduation = document.getElementById("graduation");

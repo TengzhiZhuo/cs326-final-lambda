@@ -84,7 +84,11 @@ createServer(async (req, res) => {
                 password: data.password
             };
             const output2 = {
-                username: data.username
+                username: data.username,
+                graduation: "",
+                interest: "",
+                major: "",
+                minor: ""
             }
             for (let element of database.user) {
                 if (output.username === element.username) {
