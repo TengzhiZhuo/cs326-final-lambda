@@ -7,7 +7,6 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
     const major = document.getElementById("major").value;
     const minor = document.getElementById("minor").value;
     const interest = document.getElementById("interest").value;
-    location.href='userPage.html?user=' + curUser;
     const response = await fetch("/profilesubmit", {
         method: "post",
         headers: {
@@ -25,7 +24,6 @@ document.getElementById('profilePage').addEventListener('click', () => {
   location.href='userPage.html?user=' + curUser;
 })
 
-//
 window.onload = async function (){
   const response1 = await fetch('/getProfile');
   const queryString = window.location.search;
