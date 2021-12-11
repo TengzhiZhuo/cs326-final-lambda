@@ -18,7 +18,9 @@ window.onload = async function (){
     document.getElementById('contentTitle').innerHTML = (postArr[postArr.length - curPost]).title;
     document.getElementById('contentContext').innerHTML = (postArr[postArr.length - curPost]).content;
     for(let j = 0; j < commentArr.length; j++) {
-      if(profileArr[j].username === document.getElementById('contentUser').innerHTML) {
+      console.log(profileArr[j]);
+      if(profileArr[j].username === (postArr[postArr.length - curPost]).username) {
+        // console.log(profileArr[j]);
         if (profileArr[j].graduation !== '') {
           document.getElementById('contentProfile').innerHTML += "Graduation: " + profileArr[j].graduation + " ";
         }
