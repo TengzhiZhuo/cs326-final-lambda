@@ -151,6 +151,10 @@ createServer(async (req, res) => {
         res.end(JSON.stringify(
             database.post
         ));       
+    } else if (parsed.pathname === '/getComment') {
+        res.end(JSON.stringify(
+            database.comment
+        ));       
     } else if (parsed.pathname === '/loginsubmit') {
         // let body = '';
         // req.on('data', data => body += data);
