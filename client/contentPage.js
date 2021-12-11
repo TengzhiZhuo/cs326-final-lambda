@@ -18,6 +18,19 @@ window.onload = async function (){
     document.getElementById('contentContext').innerHTML = (postArr[postArr.length - curPost]).content;
   }
 
+  document.getElementById('postComment').addEventListener('click', async () => {
+    const post = document.getElementById("contentTitle").innerHTML;
+    const content = document.getElementById("userComment").value;
+    location.href = 'contentPage.html?post=' + curPost +'&user=' + curUser;
+    const response = await fetch("/commentsubmit", {
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({ username : curUser, post : post, content : content})
+      });
+});
+
   document.getElementById('profilePage').addEventListener('click', () => {
     location.href='userPage.html?user=' + curUser;
   })

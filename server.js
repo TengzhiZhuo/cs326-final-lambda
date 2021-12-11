@@ -70,6 +70,22 @@ createServer(async (req, res) => {
             });
             await client.close();
         });
+    } else if (parsed.pathname === '/commentsubmit') {
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', async () => {
+            const data = JSON.parse(body);
+            const output = {
+                username: data.username,
+                post: data.post,
+                content: data.content
+            };
+            database.comment.push(output);
+            client.connect(err => {
+                collection3.insertOne(output);
+            });
+            await client.close();
+        });
     } else if (parsed.pathname === '/signupsubmit') {
         let body = '';
         let result = false;
