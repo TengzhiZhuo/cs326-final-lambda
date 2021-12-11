@@ -152,35 +152,56 @@ createServer(async (req, res) => {
             database.comment
         ));
     } else if (parsed.pathname === '/loginsubmit') {
+        // let body = '';
+        // req.on('data', data => body += data);
+        // req.on('end', () => {
+        //     const data = JSON.parse(body);
+        //     let secrets;
+        //     let password;
+        //     if (!process.env.PASSWORD) {
+        //         secrets = require('secrets.json');
+        //         password = secrets.password;
+        //     } else {
+        //         password = process.env.PASSWORD;
+        //     }
+        //     let username;
+        //     if (!process.env.USERNAME) {
+        //         secrets = require('secrets.json');
+        //         username = secrets.username;
+        //     } else {
+        //         username = process.env.USERNAME;
+        //     }
+
+        //     var found = false;
+        //     for(var i = 0; i < database.user.length; i++) {
+        //         if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+        //             found = true;
+        //             break;
+        //         }
+        //     }
+        //     if (data.password === password && data.username === username) {
+        //         found = true;
+        //     }
+        //     if (found) {
+        //         res.end(JSON.stringify(
+        //             true
+        //         ));    
+        //     }   else {
+        //         res.end(JSON.stringify(
+        //             false
+        //         ));
+        //     }
+        // });
         let body = '';
         req.on('data', data => body += data);
         req.on('end', () => {
             const data = JSON.parse(body);
-            let secrets;
-            let password;
-            if (!process.env.PASSWORD) {
-                secrets = require('secrets.json');
-                password = secrets.password;
-            } else {
-                password = process.env.PASSWORD;
-            }
-            let username;
-            if (!process.env.USERNAME) {
-                secrets = require('secrets.json');
-                username = secrets.username;
-            } else {
-                username = process.env.USERNAME;
-            }
-
             var found = false;
             for(var i = 0; i < database.user.length; i++) {
                 if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
                     found = true;
                     break;
                 }
-            }
-            if (data.password === password && data.username === username) {
-                found = true;
             }
             if (found) {
                 res.end(JSON.stringify(
@@ -192,27 +213,6 @@ createServer(async (req, res) => {
                 ));
             }
         });
-    //     let body = '';
-    //     req.on('data', data => body += data);
-    //     req.on('end', () => {
-    //         const data = JSON.parse(body);
-    //         var found = false;
-    //         for(var i = 0; i < database.user.length; i++) {
-    //             if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
-    //                 found = true;
-    //                 break;
-    //             }
-    //         }
-    //         if (found) {
-    //             res.end(JSON.stringify(
-    //                 true
-    //             ));    
-    //         }   else {
-    //             res.end(JSON.stringify(
-    //                 false
-    //             ));
-    //         }
-    //     });
     } else {
         const filename = parsed.pathname === '/' ? "index.html" : parsed.pathname.replace('/', '');
         const path = join("client/", filename);

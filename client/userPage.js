@@ -7,6 +7,7 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
     const major = document.getElementById("major").value;
     const minor = document.getElementById("minor").value;
     const interest = document.getElementById("interest").value;
+    location.href='userPage.html?user=' + curUser;
     const response = await fetch("/profilesubmit", {
         method: "post",
         headers: {
