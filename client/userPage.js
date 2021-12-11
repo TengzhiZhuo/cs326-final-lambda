@@ -7,7 +7,7 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
     const major = document.getElementById("major").value;
     const minor = document.getElementById("minor").value;
     const interest = document.getElementById("interest").value;
-    location.href='userPage.html?user=' + curUser;
+    // location.href='userPage.html?user=' + curUser;
     const response = await fetch("/profilesubmit", {
         method: "post",
         headers: {
@@ -15,6 +15,7 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
         },
         body: JSON.stringify({ username : curUser, graduation : graduation, major : major, minor : minor, interest : interest})
       });
+      location.href='userPage.html?user=' + curUser;
 });
 
 document.getElementById('backhomePage').addEventListener('click', () => {
