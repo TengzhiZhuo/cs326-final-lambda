@@ -1,9 +1,6 @@
 'use strict';
 
 import { MongoClient } from 'mongodb';
-import express from 'express';
-import * as fs from 'fs';
-import { get } from 'http';
 import path from 'path';
 import {createServer} from 'http';
 import {parse} from 'url';
@@ -24,6 +21,7 @@ try {
 } catch (err) {
     console.log(err.stack);
 }
+
 const db = client.db("UShare");
 const collection1 = db.collection("user");
 const collection2 = db.collection("post");
@@ -34,24 +32,12 @@ const user = await collection1.find().toArray();
 const post = await collection2.find().toArray();
 const comment = await collection3.find().toArray();
 const profile = await collection4.find().toArray();
-
+//
 let database = {};
 database['user'] = user;
 database['post'] = post;
 database['comment'] = comment;
 database['profile'] = profile;
-
-// let database;
-// if (existsSync("database.json")) {
-//     database = JSON.parse(readFileSync("database.json"));
-// } else {
-//     database = {
-//         post: [],
-//         user: [],
-//         profile: [],
-//         comment: []
-//     };
-// }
 
 createServer(async (req, res) => {
     const parsed = parse(req.url, true);
@@ -62,6 +48,7 @@ createServer(async (req, res) => {
         req.on('end', async () => {
             const data = JSON.parse(body);
             const output = {
+                username: data.username,
                 title: data.title,
                 content: data.content
             };
@@ -69,7 +56,22 @@ createServer(async (req, res) => {
             client.connect(err => {
                 collection2.insertOne(output);
             });
-            await client.close();
+        });
+    } else if (parsed.pathname === '/commentsubmit') {
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', async () => {
+            const data = JSON.parse(body);
+            const output = {
+                username: data.username,
+                post: data.post,
+                content: data.content
+            };
+            database.comment.push(output);
+            client.connect(err => {
+                collection3.insertOne(output);
+            });
+        
         });
     } else if (parsed.pathname === '/signupsubmit') {
         let body = '';
@@ -81,6 +83,13 @@ createServer(async (req, res) => {
                 username: data.username,
                 password: data.password
             };
+            const output2 = {
+                username: data.username,
+                graduation: "",
+                interest: "",
+                major: "",
+                minor: ""
+            }
             for (let element of database.user) {
                 if (output.username === element.username) {
                     result = true;
@@ -91,12 +100,13 @@ createServer(async (req, res) => {
                 database.user.push(output);
                 client.connect(err => {
                     collection1.insertOne(output);
+                    collection4.insertOne(output2);
                 });
-                await client.close();
+            
             }
             res.end(JSON.stringify(result));
         });
-    } else if (parsed.pathname === '/userpagesubmit') {
+    } else if (parsed.pathname === '/profilesubmit') {
         let body = '';
         req.on('data', data => body += data);
         req.on('end', async () => {
@@ -104,7 +114,6 @@ createServer(async (req, res) => {
             let num = 0;
             for(var i = 0; i < database.profile.length; i++) {
                 if ((database.profile)[i].username === data.username) {
-                    found = true;
                     num = i;
                     break;
                 }
@@ -112,21 +121,23 @@ createServer(async (req, res) => {
             (database.profile)[num].graduation = data.graduation;
             (database.profile)[num].interest = data.interest;
             (database.profile)[num].major = data.major;
-            (database.profile)[num].minor = data.minor;    
+            (database.profile)[num].minor = data.minor;
             client.connect(err => {
-                collection4.update(
+                collection4.updateOne(
                     { 
-                        "username": data.username 
+                        username: data.username 
                     },
-                    {
-                        graduation: data.graduation,
-                        interest: data.interest,
-                        major: data.major,
-                        minor: data.minor
+                    {$set:
+                        {
+                            graduation: data.graduation,
+                            interest: data.interest,
+                            major: data.major,
+                            minor: data.minor
+                        }
                     }
                 );  
             });
-            await client.close(); 
+         
         });
     } else if (parsed.pathname === '/getProfile') {
         res.end(JSON.stringify(
@@ -136,6 +147,10 @@ createServer(async (req, res) => {
         res.end(JSON.stringify(
             database.post
         ));       
+    } else if (parsed.pathname === '/getComment') {
+        res.end(JSON.stringify(
+            database.comment
+        ));
     } else if (parsed.pathname === '/loginsubmit') {
         let body = '';
         req.on('data', data => body += data);
@@ -177,6 +192,27 @@ createServer(async (req, res) => {
                 ));
             }
         });
+    //     let body = '';
+    //     req.on('data', data => body += data);
+    //     req.on('end', () => {
+    //         const data = JSON.parse(body);
+    //         var found = false;
+    //         for(var i = 0; i < database.user.length; i++) {
+    //             if ((database.user)[i].username === data.username && (database.user)[i].password === data.password) {
+    //                 found = true;
+    //                 break;
+    //             }
+    //         }
+    //         if (found) {
+    //             res.end(JSON.stringify(
+    //                 true
+    //             ));    
+    //         }   else {
+    //             res.end(JSON.stringify(
+    //                 false
+    //             ));
+    //         }
+    //     });
     } else {
         const filename = parsed.pathname === '/' ? "index.html" : parsed.pathname.replace('/', '');
         const path = join("client/", filename);
@@ -200,5 +236,3 @@ createServer(async (req, res) => {
     }
 }).listen(process.env.PORT || 8080);
 //process.env.PORT || 8080
-
-await client.close();

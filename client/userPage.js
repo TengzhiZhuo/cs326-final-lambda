@@ -1,6 +1,6 @@
 'use strict';
 
-import {curUser} from './LogInPage.js';
+let curUser = '';
 
 document.getElementById('userpagesubmit').addEventListener('click', async () => {
     const graduation = document.getElementById("graduation").value;
@@ -16,11 +16,34 @@ document.getElementById('userpagesubmit').addEventListener('click', async () => 
       });
 });
 
-// window.onload = async function () {
-//   const response1 = await fetch('/getProfile');
-//   const postArr = await response1.json();
-//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).title);
-//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 1]).content);
-//   document.getElementById("graduation").value = JSON.stringify((postArr[postArr.length - 2]).title);
-//   document.getElementById("graduation").value = 
-// }
+document.getElementById('backhomePage').addEventListener('click', () => {
+  location.href='mainPage.html?user=' + curUser;
+})
+
+document.getElementById('profilePage').addEventListener('click', () => {
+  location.href='userPage.html?user=' + curUser;
+})
+
+window.onload = async function (){
+  const response1 = await fetch('/getProfile');
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const profileArr = await response1.json();
+  curUser = urlParams.get('user'); 
+  document.getElementById('userpageName').innerHTML = curUser;
+  let graduation = document.getElementById("graduation");
+  let major = document.getElementById("major");
+  let minor = document.getElementById("minor");
+  let interest = document.getElementById("interest");
+  for (let i = 0; i < profileArr.length; i++) {
+    console.log(profileArr[i]);
+    if(profileArr[i].username === curUser) {
+      console.log('hi');
+      graduation.value = profileArr[i].graduation;
+      major.value = profileArr[i].major;
+      minor.value = profileArr[i].minor;
+      interest.value = profileArr[i].interest;
+      break;
+    }
+  }
+}

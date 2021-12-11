@@ -10,23 +10,26 @@
 
     <body>
     <img src="img/logoPic.png" class="content-Logo" alt="">
-    <a type="home" class="btn btn-outline-danger content-Button" id="backhomePage" href="mainPage.html" role="button">Home</a>
-    <a type="profile" class="btn btn-outline-danger content-Button" id="profilePage" href="userPage.html" role="button">User Profile</a>
-    <a type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" href="index.html" role="button">Login</a>
+    <a type="home" class="btn btn-outline-danger content-Button" id="backhomePage" role="button">Home</a>
+    <a type="profile" class="btn btn-outline-danger content-Button" id="profilePage" role="button">User Profile</a>
+    <a type="signOut" class="btn btn-outline-danger content-signOut" id="Login/SignOut" href="index.html" role="button">Sign Out</a>
     <br>
     <div class="content-Line"></div>
 
         <img src="img/userPic1.jpg" class="content-Img" alt="">
         <h1 id="contentTitle" class="content-Text">Some title</h1>
-        <div class="content-Text bold"><img src="img/profilePicDefault.jpg" class="rounded-circle content-Head" alt="">Username</div>
+        <div class="content-Text bold"><img src="img/profilePicDefault.jpg" class="rounded-circle content-Head" alt="">
+          <b class="usernameSize" id="contentUser">Username</b>
+          <c class="colorGrey" id="contentProfile"></c>
+        </div>
         <div id="contentContext" class="content-Text content-margeTop">some content goes here some content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes heresome content goes here
         </div><br>
 
         <div class="card content-Text content-margeBottom">
           <h5 class="card-header">Comments</h5>
           <div class="card-body">
-            <div class="bold"><img src="img/profilePicDefault.jpg" class="rounded-circle content-smallHead" alt="">Username</div>
-            <p class="card-text content-margeTop" id="comments">This is some testing comment</p>
+            <div id="comments">
+            </div><br>
             <div class="row g-3">
               <div class="col-sm-10">
                 <input type="writeComment" class="form-control" id="userComment" placeholder="Write your comment">
@@ -37,7 +40,7 @@
             </div>
           </div>
         </div>
-
+        <script src="./contentPage.js"></script>
     </body>
 
 </html>
