@@ -25,6 +25,7 @@ document.getElementById('profilePage').addEventListener('click', () => {
   location.href='userPage.html?user=' + curUser;
 })
 
+//
 window.onload = async function (){
   const response1 = await fetch('/getProfile');
   const queryString = window.location.search;
