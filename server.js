@@ -60,6 +60,7 @@ createServer(async (req, res) => {
         req.on('end', async () => {
             const data = JSON.parse(body);
             const output = {
+                username: data.username,
                 title: data.title,
                 content: data.content
             };

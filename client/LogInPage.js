@@ -13,7 +13,7 @@ document.getElementById('loginSubmit').addEventListener('click', async () => {
       const suc = await response.json();
       if(suc){
         window.curUser = username;
-        location.href='mainPage.html';
+        location.href='mainPage.html?user=' + curUser;
       } else {
         alert("Wrong Username or Password");
       }
