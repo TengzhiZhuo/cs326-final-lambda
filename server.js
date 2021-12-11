@@ -39,18 +39,6 @@ database['post'] = post;
 database['comment'] = comment;
 database['profile'] = profile;
 
-// let database;
-// if (existsSync("database.json")) {
-//     database = JSON.parse(readFileSync("database.json"));
-// } else {
-//     database = {
-//         post: [],
-//         user: [],
-//         profile: [],
-//         comment: []
-//     };
-// }
-
 createServer(async (req, res) => {
     const parsed = parse(req.url, true);
 
