@@ -57,15 +57,14 @@ Data resources are accessed via standard HTTPS requests to an API endpoint. Basi
 
 | Requests | Actions |
 | -------- | -------- |
-|GET /userPage | Retrieves user page data |
-|POST/userPage/save | Creates user page data identified by User ID|
-|POST /signUp/save | Save user username and password identified by User ID|
-|GET /mainPage | Retrieves posts data|
-|POST /mainPage/save | Creates the post data when a user create a new post|
-|GET /singlePost | Retrieves single post page data, including posts and comments |
-|POST /singlePost/save | Creates single post page data identified by User ID |
-|GET /userPosts | Retrieves user posts data |
-|POST /userPosts/save | Creates user posts data identified by User ID and Post ID |
+|GET /getProfile | Retrieves user profile data |
+|POST /loginsubmit | Check log in |
+|POST /signupsubmit | Save user username and password |
+|GET /getPost | Retrieves posts data|
+|POST /postsubmit | Creates the post data when a user create a new post |
+|POST /profilesubmit | Creates profile data identified by User name |
+|GET /getComment | Retrieves user comment data |
+|POST /commentsubmit | Creates user comment data identified by User name and Post name |
 
 
 In requests to the Web API and responses from it, you will frequently encounter the following parameters:
