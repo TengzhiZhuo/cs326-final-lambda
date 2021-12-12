@@ -143,6 +143,7 @@ profile document
 
 ### Conclusion
 
+Through the whole design and implementation process we have learned many interesting html and css operations, the way of creating a server and the CRUD operations and most importantly different features in github. The greatest difficulties is the to implement the routing of different pages. We have five different html pages in total and for different user/post the pages should show different contents. Another difficulty that we concountered is the sever and CRUD operations, which took us quite a long time to make it work successfully. A thing that our team would have liked to know or do before starting the project is that we have to plan a complete routing when designing the html pages. It took us some times to go back on the html pages when we were working on other Milestones and plan a complete routing would have helped us later.
 
 
 # Final Rubric
@@ -155,6 +156,7 @@ profile document
   - Only able to view the details of the inner pages if you are a user.
 - Routing
 - Linting/ code style
+- Fav Icon implementation
 
 ### Final Video &emsp; &emsp; &emsp; &emsp; &emsp; ___ / 10 pts
 
