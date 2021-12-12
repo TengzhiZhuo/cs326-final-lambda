@@ -32,8 +32,8 @@ This page is for the users to sign up for an account if they don't have one.
 
 img
 
-#### Main Page
-In the main page, the users can send a post with texts, photos, and locations. Other users can view the posts and they can click on the post title to see all the information.
+#### Home Page
+In the home page, the users can send a post with texts, photos, and locations. Other users can view the posts and they can click on the post title to see all the information.
 
 img
 
@@ -66,25 +66,6 @@ Data resources are accessed via standard HTTPS requests to an API endpoint. Basi
 |GET /getComment | Retrieves user comment data |
 |POST /commentsubmit | Creates user comment data identified by User name and Post name |
 
-
-In requests to the Web API and responses from it, you will frequently encounter the following parameters:
-| Parameter | Description | Example |
-| -------- | -------- | -------- |
-| User Id  | The unique number identifying  was assigned to the user after they sign up and it helps identify the user's profile, posts and comments   | 1 |
-| Post Id  | The unique number identifying the user posts   | 2 |
-| Comment Id  | The unique number identifying the user comments  | 3 |
-
-
-Web API returns all response data as a JSON object.
-
-
-Example output: 
-{ 
-  user: {"1": {username: jack, password: 12345}},
-  profile: {"1": {username: jack, "graduation":"2023", "major":"1", "minor":"2", "interest":"4", image: smth.png, post: ["1", "2"]}},
-  post: {"1": {image: smth.png, title:abc, content: "Hello World", userid: "1", comment: ["1", "2"]}, "2": {title: "Hello", content: "Hello World", userid: "1"}},
-  comment: {"1": {content:, userid: "1"}}
-}
 
 ### Database Documentation
 
@@ -137,7 +118,22 @@ profile document
 
 ### URL Routes/Mappings
 
+| Routes | Description |
+| -------- | -------- |
+|Login -> Signup | When the user needs to sign up |
+|Login -> Homepage | Each user can only access their own homepage / Check contents on Homepage |
+|Homepage -> Contentpage | Each user can only have their own username to give comments / Check the contents of any of the posts shwon on Homepage |
+|Homepage/Contentpage -> Profilepage | Each user can only check their own profile / Check or modify contents of the profile |
+|Homepage/Contentpage/Profilepage -> Login(sign out) | To sign out of current user |
+
 ### Authentication/Authorization
+
+  - All the user's usernames must be unique
+  - A window will pop up after successfully signed up
+  - The password for log in must match the one signed up
+  - A window will pop up if the password or the username
+  - Only able to view the details of the inner pages if you are a user
+  - Different users can only view their own unique pages
 
 ### Breakdown of Labor Division
 * Tengzhi Zhuo: Compeleted the HTML and CSS of main page and user profile page. The server setup, the userPage html CRUD operations. Modified CRUD operations and backend codes of user page, signup page, implement Mongodb database.
