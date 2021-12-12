@@ -98,11 +98,11 @@ createServer(async (req, res) => {
             }
             if (!result) {
                 database.user.push(output);
+                database.profile.push(output2);
                 client.connect(err => {
                     collection1.insertOne(output);
                     collection4.insertOne(output2);
                 });
-            
             }
             res.end(JSON.stringify(result));
         });
