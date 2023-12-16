@@ -24,29 +24,29 @@ Users can post data such as images, time, locations, etc., and other users can p
 
 This page is for the users to log in to their account.
 
-<img src="img/final-login.png" alt="alt text" title="image Title" />
+<img src="docs/img/final-login.png" alt="alt text" title="image Title" />
 
 #### Sign up Page
 
 This page is for the users to sign up for an account if they don't have one.
 
-<img src="img/final-signup.png" alt="alt text" title="image Title" />
+<img src="docs/img/final-signup.png" alt="alt text" title="image Title" />
 
 #### Home Page
 In the home page, the users can send a post with texts, photos, and locations. Other users can view the posts and they can click on the post title to see all the information.
 
-<img src="img/final-homepage.png" alt="alt text" title="image Title" />
+<img src="docs/img/final-homepage.png" alt="alt text" title="image Title" />
 
 #### Content Page
 
 The content page is the page where users can see the full content of the experience shown by another user. At the top of the page, its some buttons to direct the user to other pages. Users can access all the images and the contents of the post in this page. Also, their is a comment section for users to share ideas and thoughts at the bottom. 
 
-<img src="img/final-contentpage.png" alt="alt text" title="image Title" />
+<img src="docs/img/final-contentpage.png" alt="alt text" title="image Title" />
 
 #### User Profile Page
 The user profile page is for the user to log their graduation date, major, minor, and interest. They can click on the "Save" button to save their information. They can also upload their profile pictures by clicking on the "Upload Your Avaar" button, and logout from their account by clicking on the "Logout" button. 
 
-<img src="img/final-profilepage.png" alt="alt text" title="image Title" />
+<img src="docs/img/final-profilepage.png" alt="alt text" title="image Title" />
 
 
 
